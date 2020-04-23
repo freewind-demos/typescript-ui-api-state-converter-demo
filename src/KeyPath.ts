@@ -1,23 +1,24 @@
-export default class KeyPath<T> {
+import {ApiState} from './ApiState';
+import {UiState} from './UiState';
 
-  private nestedKeys: string[] = [];
-
-  of<P1 extends keyof NonNullable<T>>(prop1: P1): this;
-
-  of<P1 extends keyof NonNullable<T>,
+export type KeyPath<T> = {
+  check<P1 extends keyof NonNullable<T>>(prop1: P1): string[];
+  check<P1 extends keyof NonNullable<T>,
     P2 extends keyof NonNullable<NonNullable<T>[P1]>>(
     prop1: P1, prop2: P2
-  ): this;
+  ): string[];
 
-  of<P1 extends keyof NonNullable<T>,
+  check<P1 extends keyof NonNullable<T>,
     P2 extends keyof NonNullable<NonNullable<T>[P1]>,
     P3 extends keyof NonNullable<NonNullable<NonNullable<T>[P1]>[P2]>>(
     prop1: P1, prop2: P2, prop3: P3
-  ): this;
+  ): string[];
+}
 
-  of(...nestedKeys: string[]): this {
-    this.nestedKeys = nestedKeys;
-    return this;
-  }
+export const UiKeyPath: KeyPath<UiState> = {
+  check: (...keys: string[]) => (keys),
+}
 
+export const ApiKeyPath: KeyPath<ApiState> = {
+  check: (...keys: string[]) => (keys),
 }
