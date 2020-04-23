@@ -1,19 +1,29 @@
-import KeyPath from '../KeyPath';
+import {getProperty, KeyPath, setProperty} from '../KeyPath';
 import {TransformRule} from '../TransformRule';
 
-export default function oneToOne<UiState, ApiState>(
+export default function oneToOne<UiState extends object, ApiState extends object, UiPropertyType, ApiPropertyType>(
   {
     uiKey,
     apiKey,
+    uiToApi,
+    apiToUi,
   }: {
-    uiKey: KeyPath<UiState>;
-    apiKey: KeyPath<ApiState>;
+    uiKey: KeyPath<UiState, UiPropertyType>;
+    apiKey: KeyPath<ApiState, ApiPropertyType>;
+    uiToApi: (uiKey: UiPropertyType) => ApiPropertyType;
+    apiToUi: (apiKeyValue: ApiPropertyType) => UiPropertyType
   },
 ): TransformRule<UiState, ApiState> {
   return {
-    uiToApi: () => {
+    uiToApi: (uiState, apiState) => {
+      const uiValue = getProperty(uiState, uiKey)
+      const apiValue = uiToApi(uiValue)
+      return setProperty(apiState, apiKey, apiValue);
     },
-    apiToUi: () => {
+    apiToUi: (apiState, uiState) => {
+      const apiValue = getProperty(apiState, apiKey)
+      const uiValue = apiToUi(apiValue)
+      return setProperty(uiState, uiKey, uiValue);
     }
   }
 };

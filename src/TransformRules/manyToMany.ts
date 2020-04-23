@@ -1,4 +1,4 @@
-import KeyPath from '../KeyPath';
+import {KeyPath} from '../KeyPath';
 import {TransformRule} from '../TransformRule';
 
 export default function manyToMany<UiState, ApiState>({uiKeys, apiKeys}: { uiKeys: KeyPath<UiState>[], apiKeys: KeyPath<ApiState>[] }):

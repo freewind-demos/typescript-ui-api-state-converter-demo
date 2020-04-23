@@ -1,6 +1,9 @@
 import {ApiState} from './ApiState';
+import {identity} from './converters/identify';
+import numbersToString from './converters/numbersToString';
+import stringToInts from './converters/stringToInts';
 import fromUiToApi from './fromUiToApi';
-import KeyPath, {key} from './KeyPath';
+import {keyPathOf} from './KeyPath';
 import {TransformRule} from './TransformRule';
 import manyToMany from './TransformRules/manyToMany';
 import manyToOne from './TransformRules/manyToOne';
@@ -10,17 +13,21 @@ import {UiState} from './UiState';
 
 const uiState: UiState = {}
 
-const uiKeys = new KeyPath<UiState>();
-const apiKeys = new KeyPath<ApiState>();
+const uiKeys = keyPathOf<UiState>();
+const apiKeys = keyPathOf<ApiState>();
 
 const rules: TransformRule<UiState, ApiState>[] = [
   oneToOne({
     uiKey: uiKeys.of('zipcode'),
     apiKey: apiKeys.of('details1', 'zipcode'),
+    uiToApi: identity,
+    apiToUi: identity
   }),
   oneToOne({
     uiKey: uiKeys.of('listingNumbers'),
-    apiKey: apiKeys.of('details1', 'listingNumbers')
+    apiKey: apiKeys.of('details1', 'listingNumbers'),
+    uiToApi: stringToInts,
+    apiToUi: numbersToString
   }),
   manyToOne({
     uiKeys: [
