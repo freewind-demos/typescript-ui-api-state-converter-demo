@@ -1,7 +1,4 @@
-import {AllPossibleApiState} from './AllPossibleApiState';
-import {PartOf} from './typeUtils';
-
-export type ApiState = PartOf<AllPossibleApiState, {
+export type AllPossibleApiState = {
   details1?: {
     zipcode?: string,
     listingNumbers?: number[],
@@ -14,7 +11,6 @@ export type ApiState = PartOf<AllPossibleApiState, {
     ccc4?: string,
   },
   details3?: {
-    d111?: string
-    d222?: string
+    [key in string]?: string
   }
-}>
+}
