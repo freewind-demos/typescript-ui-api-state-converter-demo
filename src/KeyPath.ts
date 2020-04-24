@@ -33,3 +33,10 @@ export function setProperty<T extends object, P>(obj: T, keyPath: KeyPath<T, P>,
   // FIXME just quick and dirty
   return set(keyPath.fullKeyPath, value, obj);
 }
+
+// FIXME how to declare U which makes keyPath and value have correct typing
+export function setProperties<T extends object>(obj: T, keyPathsAndValues: { keyPath: KeyPath<T, any /*U*/>, value: any /*U*/ }[]) {
+  return keyPathsAndValues.reduce((a, item) => {
+    return setProperty(a, item.keyPath, item.value)
+  }, obj)
+}
