@@ -1,1 +1,5 @@
-export type PartOf<T, X extends Partial<T>> = X
+export type IsPartOf<Partial, All> = 
+  [keyof Partial] extends [keyof All] ? All extends Partial ? true : false : false
+
+
+

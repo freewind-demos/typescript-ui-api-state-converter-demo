@@ -1,7 +1,7 @@
 import {AllPossibleApiState} from './AllPossibleApiState';
-import {PartOf} from './typeUtils';
+import {IsPartOf} from './typeUtils';
 
-export type ApiState = PartOf<AllPossibleApiState, {
+export type ApiState = {
   details1?: {
     zipcode?: string,
     listingNumbers?: number[],
@@ -17,4 +17,6 @@ export type ApiState = PartOf<AllPossibleApiState, {
     d111?: string
     d222?: string
   }
-}>
+}
+
+const isPartOfChecking : IsPartOf<ApiState, AllPossibleApiState> = true;
