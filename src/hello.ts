@@ -3,7 +3,7 @@ import {identity} from './converters/identify';
 import numbersToString from './converters/numbersToString';
 import stringToInts from './converters/stringToInts';
 import fromUiToApi from './fromUiToApi';
-import {keyPathOf} from './KeyPath';
+import {KeyPathBuilder} from './KeyPath';
 import {TransformRule} from './TransformRule';
 import manyToMany from './TransformRules/manyToMany';
 import manyToOne from './TransformRules/manyToOne';
@@ -13,8 +13,8 @@ import {UiState} from './UiState';
 
 const uiState: UiState = {}
 
-const uiKeys = keyPathOf<UiState>();
-const apiKeys = keyPathOf<ApiState>();
+const uiKeys = new KeyPathBuilder<UiState>();
+const apiKeys = new KeyPathBuilder<ApiState>();
 
 const rules: TransformRule<UiState, ApiState>[] = [
   oneToOne({
