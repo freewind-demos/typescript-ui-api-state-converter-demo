@@ -3,7 +3,7 @@ import {KeyPath} from '../../KeyPath';
 import {TransformRule} from '../../TransformRule';
 import oneToOne from '../oneToOne';
 
-export default function copyValue<UiState extends object, ApiState extends object, T>(
+export default function copyValue<UiState, ApiState, T>(
   {
     uiKey,
     apiKey,

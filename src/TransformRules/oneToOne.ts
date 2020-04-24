@@ -1,7 +1,7 @@
 import {getProperty, KeyPath, setProperty} from '../KeyPath';
 import {TransformRule} from '../TransformRule';
 
-export default function oneToOne<UiState extends object, ApiState extends object, UiPropertyType, ApiPropertyType>(
+export default function oneToOne<UiState, ApiState, UiPropertyType, ApiPropertyType>(
   {
     uiKey,
     apiKey,

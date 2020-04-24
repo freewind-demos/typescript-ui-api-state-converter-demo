@@ -2,7 +2,7 @@ import {minMaxToString, stringToMinMax} from '../../converters/minMax';
 import {getProperty, KeyPath, setProperties, setProperty} from '../../KeyPath';
 import {TransformRule} from '../../TransformRule';
 
-export default function minMax<UiState extends object, ApiState extends object>(
+export default function minMax<UiState, ApiState>(
   {
     uiKey,
     apiKeys,
