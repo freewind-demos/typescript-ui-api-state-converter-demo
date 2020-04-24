@@ -1,3 +1,3 @@
-export default function stringToInts(s: string): number[] {
-  return s.split(',').map(it => parseInt(it));
+export default function stringToInts(str: string | undefined): number[] | undefined {
+  return str?.split(',').map(parseInt);
 }
