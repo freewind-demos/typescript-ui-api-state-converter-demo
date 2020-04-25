@@ -7,10 +7,10 @@ export default function minMax<UiState, ApiState>(
     uiKey,
     apiKeys,
   }: {
-    uiKey: KeyPath<UiState, string>;
+    uiKey: KeyPath<UiState, string | undefined>;
     apiKeys: {
-      min: KeyPath<ApiState, number>,
-      max: KeyPath<ApiState, number>
+      min: KeyPath<ApiState, number | undefined>,
+      max: KeyPath<ApiState, number | undefined>
     };
   }
 ): TransformRule<UiState, ApiState> {

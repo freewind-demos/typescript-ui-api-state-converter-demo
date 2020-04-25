@@ -1,6 +1,9 @@
 // TODO: handle only format: A-B
-export function stringToMinMax(str: string): [number | undefined, number | undefined] {
-  const [min, max] = str.split('-').map(parseInt)
+export function stringToMinMax(str: string | undefined): [number | undefined, number | undefined] {
+  if (str === undefined) {
+    return [undefined, undefined]
+  }
+  const [min, max] = str.split('-').map(it => parseInt(it));
   return [min, max];
 }
 

@@ -10,8 +10,6 @@ import minMax from './TransformRules/common/minMax';
 import oneToOne from './TransformRules/oneToOne';
 import {UiState} from './UiState';
 
-const uiState: UiState = {}
-
 const uiKeys = new KeyPathBuilder<UiState>();
 const apiKeys = new KeyPathBuilder<ApiState>();
 
@@ -67,6 +65,18 @@ const rules: TransformRule<UiState, ApiState>[] = [
   //   ]
   // })
 ]
+
+const uiState: UiState = {
+  zipcode: '123123',
+  listingNumbers: '111,222',
+  listingEvents: {
+    startDate: '2020-01-01',
+    endDate: '2020-01-02',
+    listingEvents: []
+  },
+  price: '22-33',
+  aaa1: 'aaaaa',
+}
 
 const apiState = fromUiToApi(uiState, rules)
 console.log('### apiState', apiState);
