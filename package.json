@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "demo": "ts-node src/hello.ts"
+    "demo": "ts-node src/index.ts"
   },
   "devDependencies": {
     "@types/lodash": "4.14.150",
