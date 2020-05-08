@@ -1,4 +1,4 @@
-import {AllPossibleApiState} from './AllPossibleApiState';
+import {AllPossibleApiState, Location} from './AllPossibleApiState';
 import {PartOf} from './typeUtils';
 
 export type ApiState = PartOf<AllPossibleApiState, {
@@ -24,5 +24,8 @@ export type ApiState = PartOf<AllPossibleApiState, {
   details3?: {
     d111?: string
     d222?: string
-  }
+  },
+
+  location?: Location[]
 }>
+
