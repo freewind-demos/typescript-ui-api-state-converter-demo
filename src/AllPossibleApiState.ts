@@ -20,5 +20,20 @@ export type AllPossibleApiState = {
   },
   details3?: {
     [key in string]?: string
-  }
+  },
+
+  location?: Location[]
 }
+
+export interface Location {
+  city?: string;
+  state?: string;
+  neighborhood?: string;
+  buildingName?: string;
+  address?: string;
+  buildingAddress?: string;
+  street?: string;
+  geography?: string;
+  mrisId?: string;
+}
+
